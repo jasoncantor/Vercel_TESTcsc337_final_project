@@ -1,0 +1,137 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+  
+  #app {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .screen {
+    display: none;
+  }
+  
+  .screen.active {
+    display: block;
+  }
+  
+  h2, h3, h4 {
+    color: #333;
+  }
+  
+  input, button {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  nav {
+    margin-bottom: 20px;
+  }
+  
+  nav button {
+    margin-right: 10px;
+  }
+  
+  .login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  #dashboard {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  #content-container {
+    margin-top: 20px;
+  }
+  
+  .content-section {
+    display: none;
+  }
+  
+  .content-section > div {
+    margin-top: 15px;
+  }
+  
+  .content-section h4 {
+    margin-top: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  
+  table th, table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #f4f4f4;
+  }
+  
+  table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+  .completeBtn, .editBtn, .deleteBtn {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .completeBtn {
+    background-color: #28a745;
+  }
+  
+  .completeBtn:hover {
+    background-color: #218838;
+  }
+  
+  .editBtn {
+    background-color: #ffc107;
+  }
+  
+  .editBtn:hover {
+    background-color: #e0a800;
+  }
+  
+  .deleteBtn {
+    background-color: #dc3545;
+  }
+  
+  .deleteBtn:hover {
+    background-color: #c82333;
+  }
+  
+  input[type="number"] {
+    width: 100%;
+  }
+  
