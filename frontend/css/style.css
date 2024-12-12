@@ -44,6 +44,19 @@ button:hover {
   background-color: #0056b3;
 }
 
+#helpBtn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+#helpBtn:hover {
+  background-color: #0056b3;
+}
+
 nav {
   margin-bottom: 20px;
 }
@@ -112,7 +125,7 @@ table tbody tr:nth-child(even) {
   background-color: #28a745;
 }
 
-.completeBtn:hover {
+completeBtn:hover {
   background-color: #218838;
 }
 
