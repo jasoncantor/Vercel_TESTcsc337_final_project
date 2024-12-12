@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   navButtons.forEach((btn) => {
     btn.addEventListener('click', handleNavigation);
   });
+
+  const createUserBtn = document.getElementById('createUserBtn');
+  createUserBtn.addEventListener('click', handleCreateUser);
     
   async function handleLogin() {
     const usernameInput = document.getElementById('username');
@@ -43,6 +46,36 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error(error);
       alert('An error occurred during login.');
+    }
+  }
+
+  async function handleCreateUser() {
+    const newUsernameInput = document.getElementById('newUsername');
+    const newPasswordInput = document.getElementById('newPassword');
+    const newUsername = newUsernameInput.value.trim();
+    const newPassword = newPasswordInput.value.trim();
+
+    if (!newUsername || !newPassword) {
+      alert('Please enter a username and password');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://your-vercel-deployment-url.vercel.app/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: newUsername, password: newPassword }),
+      });
+      if (!response.ok) {
+        throw new Error('User creation failed');
+      }
+      const data = await response.json();
+      alert('User created successfully');
+      newUsernameInput.value = '';
+      newPasswordInput.value = '';
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred during user creation.');
     }
   }
     
