@@ -19,11 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const createUserBtn = document.getElementById('createUserBtn');
   createUserBtn.addEventListener('click', handleCreateUser);
 
-  const helpBtn = document.getElementById('helpBtn');
-  helpBtn.addEventListener('click', () => {
-    window.location.href = 'help.html';
-  });
-    
   async function handleLogin() {
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
