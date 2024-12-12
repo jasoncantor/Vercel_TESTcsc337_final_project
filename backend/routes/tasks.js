@@ -46,10 +46,10 @@ router.post('/api/task', async (req, res) => {
 // Update a task
 router.put('/api/task/:id', async (req, res) => {
   const { id } = req.params;
-  const { completed, username, activity, area, assignedTo, notes } = req.body;
+  const { completed, username } = req.body;
 
-  if (completed === undefined && (!activity || !area || !username)) {
-    return res.status(400).json({ message: 'Completed status or Activity, Area, and Username are required.' });
+  if (completed === undefined || !username) {
+    return res.status(400).json({ message: 'Completed status and Username are required.' });
   }
 
   try {
@@ -58,22 +58,7 @@ router.put('/api/task/:id', async (req, res) => {
       return res.status(404).json({ message: 'Task not found.' });
     }
 
-    if (completed !== undefined) {
-      task.completed = completed;
-    }
-    if (activity) {
-      task.activity = activity;
-    }
-    if (area) {
-      task.area = area;
-    }
-    if (assignedTo) {
-      task.assignedTo = assignedTo;
-    }
-    if (notes) {
-      task.notes = notes;
-    }
-
+    task.completed = completed;
     await task.save();
     res.json(task);
   } catch (error) {
