@@ -24,12 +24,14 @@ const taskRoutes = require('./routes/tasks');
 const budgetRoutes = require('./routes/budgets');
 const specialTaskRoutes = require('./routes/specialTasks');
 const equipmentRoutes = require('./routes/equipment');
+const messageRoutes = require('./routes/messages');
 
 app.use(userRoutes);
 app.use(taskRoutes);
 app.use(budgetRoutes);
 app.use(specialTaskRoutes);
 app.use(equipmentRoutes);
+app.use(messageRoutes);
 
 // Start the server
 const PORT = 3000;

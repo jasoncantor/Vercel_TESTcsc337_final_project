@@ -80,6 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'equipment-tracker':
         loadEquipmentTracker();
         break;
+      case 'messaging':
+        loadMessages();
+        break;
       default:
         break;
     }
@@ -613,6 +616,105 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error(error);
       alert('An error occurred while deleting the equipment entry.');
+    }
+  }
+
+  // Messaging Functions
+  async function loadMessages() {
+    const messageDisplay = document.getElementById('message-display');
+    messageDisplay.innerHTML = '<p>Loading messages...</p>';
+    
+    try {
+      const response = await fetch(`http://localhost:3000/api/messages?receiver=${encodeURIComponent(username)}`, {
+        method: 'GET',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch messages');
+      }
+      const messages = await response.json();
+    
+      messageDisplay.innerHTML = ''; 
+    
+      messages.forEach((message) => {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+  
+        const senderP = document.createElement('p');
+        senderP.textContent = `From: ${message.sender}`;
+        messageDiv.appendChild(senderP);
+  
+        const contentP = document.createElement('p');
+        contentP.textContent = message.content;
+        messageDiv.appendChild(contentP);
+  
+        const timestampP = document.createElement('p');
+        timestampP.textContent = new Date(message.timestamp).toLocaleString();
+        messageDiv.appendChild(timestampP);
+  
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.dataset.id = message._id;
+        deleteBtn.classList.add('deleteBtn');
+        deleteBtn.addEventListener('click', deleteMessage);
+        messageDiv.appendChild(deleteBtn);
+    
+        messageDisplay.appendChild(messageDiv);
+      });
+    } catch (error) {
+      console.error(error);
+      messageDisplay.innerHTML = '<p>An error occurred while loading messages.</p>';
+    }
+
+    const sendMessageBtn = document.getElementById('sendMessageBtn');
+    sendMessageBtn.removeEventListener('click', sendMessage);
+    sendMessageBtn.addEventListener('click', sendMessage);
+  }
+    
+  async function sendMessage() {
+    const receiver = document.getElementById('messageReceiver').value;
+    const content = document.getElementById('messageContent').value;
+    
+    if (!receiver || !content) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    
+    try {
+      const response = await fetch('http://localhost:3000/api/message', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sender: username, receiver, content }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+      loadMessages();
+      document.getElementById('messageReceiver').value = '';
+      document.getElementById('messageContent').value = '';
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while sending the message.');
+    }
+  }
+
+  async function deleteMessage(event) {
+    const messageId = event.target.getAttribute('data-id');
+  
+    if (!confirm('Are you sure you want to delete this message?')) {
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:3000/api/message/${messageId}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete message');
+      }
+      loadMessages();
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while deleting the message.');
     }
   }
 
