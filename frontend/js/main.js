@@ -159,6 +159,14 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteBtn.classList.add('deleteBtn');
         deleteBtn.addEventListener('click', deleteTask);
         actionCell.appendChild(deleteBtn);
+
+        // Edit Button
+        const editBtn = document.createElement('button');
+        editBtn.textContent = 'Edit';
+        editBtn.dataset.id = task._id;
+        editBtn.classList.add('editBtn');
+        editBtn.addEventListener('click', editTask);
+        actionCell.appendChild(editBtn);
   
         row.appendChild(actionCell);
     
@@ -246,6 +254,35 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error(error);
       alert('An error occurred while deleting the task.');
+    }
+  }
+
+  // Edit Task Function
+  async function editTask(event) {
+    const taskId = event.target.getAttribute('data-id');
+    const newActivity = prompt('Enter new activity:');
+    const newArea = prompt('Enter new area:');
+    const newAssignedTo = prompt('Enter new assigned to:');
+    const newNotes = prompt('Enter new notes:');
+
+    if (!newActivity || !newArea) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/task/${taskId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ activity: newActivity, area: newArea, assignedTo: newAssignedTo, notes: newNotes, username }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to edit task');
+      }
+      loadJobBoard();
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while editing the task.');
     }
   }
 
