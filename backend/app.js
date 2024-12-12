@@ -2,10 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/golf-course', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -13,7 +14,7 @@ mongoose.connect('mongodb://localhost:27017/golf-course', {
   .catch((error) => console.error('MongoDB connection error:', error));
 
 app.use(cors({
-  origin: 'http://127.0.0.1:5500', 
+  origin: 'https://your-vercel-deployment-url.vercel.app', 
   credentials: true,
 }));
 app.use(bodyParser.json());
