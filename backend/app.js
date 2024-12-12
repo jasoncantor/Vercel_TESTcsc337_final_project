@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGODB_URI, {
   .catch((error) => console.error('MongoDB connection error:', error));
 
 app.use(cors({
-  origin: 'https://vercel-tes-tcsc337-final-project.vercel.app', 
+  origin: 'https://cantor-oneill-sullivan-csc337-final.vercel.app',
   credentials: true,
 }));
 app.use(bodyParser.json());
