@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     try {
-      const response = await fetch('https://your-vercel-deployment-url.vercel.app/api/login', {
+      const response = await fetch('https://vercel-tes-tcsc337-final-project.vercel.app/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: enteredUsername }),
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const response = await fetch('https://your-vercel-deployment-url.vercel.app/api/register', {
+      const response = await fetch('https://vercel-tes-tcsc337-final-project.vercel.app/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: newUsername, password: newPassword }),
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
   async function handleLogout() {
     try {
-      const response = await fetch('https://your-vercel-deployment-url.vercel.app/api/logout', {
+      const response = await fetch('https://vercel-tes-tcsc337-final-project.vercel.app/api/logout', {
         method: 'POST',
       });
       if (response.ok) {
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tasksTbody.innerHTML = '<tr><td colspan="5">Loading tasks...</td></tr>';
     
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/tasks?username=${encodeURIComponent(username)}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/tasks?username=${encodeURIComponent(username)}`, {
         method: 'GET',
       });
       if (!response.ok) {
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     try {
-      const response = await fetch('https://your-vercel-deployment-url.vercel.app/api/task', {
+      const response = await fetch('https://vercel-tes-tcsc337-final-project.vercel.app/api/task', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ activity, area, notes, assignedTo, username }),
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskId = event.target.getAttribute('data-id');
     
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/task/${taskId}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/task/${taskId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ completed: true, username }),
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/task/${taskId}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/task/${taskId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username }),
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/task/${taskId}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/task/${taskId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ activity: newActivity, area: newArea, assignedTo: newAssignedTo, notes: newNotes, username }),
@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
     specialTasksTbody.innerHTML = '<tr><td colspan="5">Loading special tasks...</td></tr>';
     
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/special-tasks?username=${encodeURIComponent(username)}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/special-tasks?username=${encodeURIComponent(username)}`, {
         method: 'GET',
       });
       if (!response.ok) {
@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     try {
-      const response = await fetch('https://your-vercel-deployment-url.vercel.app/api/special-task', {
+      const response = await fetch('https://vercel-tes-tcsc337-final-project.vercel.app/api/special-task', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, targetArea, notes, username }),
@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/special-task/${taskId}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/special-task/${taskId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username }),
@@ -444,7 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
     budgetTbody.innerHTML = '<tr><td colspan="4">Loading budget data...</td></tr>';
     
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/budgets?username=${encodeURIComponent(username)}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/budgets?username=${encodeURIComponent(username)}`, {
         method: 'GET',
       });
       if (!response.ok) {
@@ -502,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     try {
-      const response = await fetch('https://your-vercel-deployment-url.vercel.app/api/budget', {
+      const response = await fetch('https://vercel-tes-tcsc337-final-project.vercel.app/api/budget', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ category, amount, username }),
@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/budget/${budgetId}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/budget/${budgetId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username }),
@@ -547,7 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
     equipmentTbody.innerHTML = '<tr><td colspan="5">Loading equipment data...</td></tr>';
     
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/equipment?username=${encodeURIComponent(username)}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/equipment?username=${encodeURIComponent(username)}`, {
         method: 'GET',
       });
       if (!response.ok) {
@@ -610,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     try {
-      const response = await fetch('https://your-vercel-deployment-url.vercel.app/api/equipment', {
+      const response = await fetch('https://vercel-tes-tcsc337-final-project.vercel.app/api/equipment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, status, quantity, notes, username }),
@@ -637,7 +637,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/equipment/${equipmentId}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/equipment/${equipmentId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username }),
@@ -658,7 +658,7 @@ document.addEventListener('DOMContentLoaded', () => {
     messageDisplay.innerHTML = '<p>Loading messages...</p>';
     
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/messages?receiver=${encodeURIComponent(username)}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/messages?receiver=${encodeURIComponent(username)}`, {
         method: 'GET',
       });
       if (!response.ok) {
@@ -713,7 +713,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     try {
-      const response = await fetch('https://your-vercel-deployment-url.vercel.app/api/message', {
+      const response = await fetch('https://vercel-tes-tcsc337-final-project.vercel.app/api/message', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sender: username, receiver, content }),
@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     try {
-      const response = await fetch(`https://your-vercel-deployment-url.vercel.app/api/message/${messageId}`, {
+      const response = await fetch(`https://vercel-tes-tcsc337-final-project.vercel.app/api/message/${messageId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
