@@ -1,13 +1,13 @@
-
 const mongoose = require('mongoose');
 
 const TaskSchema = new mongoose.Schema({
-  area: String,
-  activity: String,
-  date: { type: Date, default: Date.now },
-  notes: String,
-  assignedTo: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  activity: { type: String, required: true },
+  area: { type: String, required: true },
+  assignedTo: { type: String },
+  notes: { type: String },
   completed: { type: Boolean, default: false },
+  username: { type: String, required: true }, 
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Task', TaskSchema);

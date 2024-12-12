@@ -1,40 +1,67 @@
-
 const express = require('express');
 const router = express.Router();
 const Equipment = require('../models/Equipment');
 
-router.post('/equipment', async (req, res) => {
-  const { name, status, quantity, notes } = req.body;
+// Get all equipment 
+router.get('/api/equipment', async (req, res) => {
+  const { username } = req.query;
+
+  if (!username) {
+    return res.status(400).json({ message: 'Username is required.' });
+  }
+
   try {
-    const equipment = new Equipment({ name, status, quantity, notes });
-    await equipment.save();
-    res.status(201).json(equipment);
+    const equipmentList = await Equipment.find({ username });
+    res.json(equipmentList);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Server error while fetching equipment.' });
   }
 });
 
-router.get('/equipment', async (req, res) => {
+// Create a new equipment entry 
+router.post('/api/equipment', async (req, res) => {
+  const { name, status, quantity, notes, username } = req.body;
+
+  if (!name || !status || !quantity || !username) {
+    return res.status(400).json({ message: 'Name, Status, Quantity, and Username are required.' });
+  }
+
   try {
-    const equipmentList = await Equipment.find();
-    res.status(200).json(equipmentList);
+    const newEquipment = new Equipment({
+      name,
+      status,
+      quantity,
+      notes,
+      username,
+    });
+    await newEquipment.save();
+    res.status(201).json(newEquipment);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Server error while creating equipment entry.' });
   }
 });
 
-router.put('/equipment/:id', async (req, res) => {
+// Delete an equipment entry 
+router.delete('/api/equipment/:id', async (req, res) => {
   const { id } = req.params;
-  const { status, quantity, notes } = req.body;
+  const { username } = req.body;
+
+  if (!username) {
+    return res.status(400).json({ message: 'Username is required.' });
+  }
+
   try {
-    const equipment = await Equipment.findByIdAndUpdate(
-      id,
-      { status, quantity, notes },
-      { new: true }
-    );
-    res.status(200).json(equipment);
+    const equipment = await Equipment.findOneAndDelete({ _id: id, username });
+    if (!equipment) {
+      return res.status(404).json({ message: 'Equipment entry not found.' });
+    }
+
+    res.json({ message: 'Equipment entry deleted successfully.' });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Server error while deleting equipment entry.' });
   }
 });
 

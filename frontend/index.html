@@ -38,12 +38,14 @@
               </tr>
             </thead>
             <tbody id="tasks-tbody">
+          
             </tbody>
           </table>
           <h4>Create a New Task</h4>
           <input type="text" id="activity" placeholder="Activity" />
           <input type="text" id="area" placeholder="Area" />
           <input type="text" id="notes" placeholder="Notes" />
+          <input type="text" id="assignedTo" placeholder="Assigned To" />
           <button id="createTaskBtn">Create Task</button>
         </div>
 
@@ -56,6 +58,7 @@
                 <th>Target Area</th>
                 <th>Notes</th>
                 <th>Date</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody id="special-tasks-tbody">
@@ -67,6 +70,7 @@
           <input type="text" id="specialNotes" placeholder="Notes" />
           <button id="createSpecialTaskBtn">Add Task</button>
         </div>
+
         <div id="budget-tracker" class="content-section">
           <h3>Budget Tracker</h3>
           <table id="budget-table">
@@ -75,6 +79,7 @@
                 <th>Category</th>
                 <th>Amount</th>
                 <th>Date</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody id="budget-tbody">
@@ -85,8 +90,10 @@
           <input type="number" id="budgetAmount" placeholder="Amount" />
           <button id="addBudgetBtn">Add Expense</button>
         </div>
+
         <div id="equipment-tracker" class="content-section">
           <h3>Equipment Tracker</h3>
+          
           <table id="equipment-table">
             <thead>
               <tr>
@@ -94,9 +101,11 @@
                 <th>Status</th>
                 <th>Quantity</th>
                 <th>Notes</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody id="equipment-tbody">
+             
             </tbody>
           </table>
           <h4>Add Equipment</h4>
