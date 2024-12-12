@@ -31,6 +31,11 @@ app.use(budgetRoutes);
 app.use(specialTaskRoutes);
 app.use(equipmentRoutes);
 
+// Help page route
+app.get('/help', (req, res) => {
+  res.sendFile(__dirname + '/frontend/help.html');
+});
+
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {

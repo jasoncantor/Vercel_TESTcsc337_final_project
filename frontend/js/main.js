@@ -18,10 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
   async function handleLogin() {
     const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
     const enteredUsername = usernameInput.value.trim();
+    const enteredPassword = passwordInput.value.trim();
     
-    if (!enteredUsername) {
-      alert('Please enter a username');
+    if (!enteredUsername || !enteredPassword) {
+      alert('Please enter both username and password');
       return;
     }
     
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch('http://localhost:3000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: enteredUsername }),
+        body: JSON.stringify({ username: enteredUsername, password: enteredPassword }),
       });
       if (!response.ok) {
         throw new Error('Login failed');
@@ -80,6 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'equipment-tracker':
         loadEquipmentTracker();
         break;
+      case 'help-page':
+        showHelpPage();
+        break;
       default:
         break;
     }
@@ -98,6 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
       section.style.display = 'none';
     });
     document.getElementById(sectionId).style.display = 'block';
+  }
+
+  function showHelpPage() {
+    const helpPageContent = `
+      <h3>Help Page</h3>
+      <p>Welcome to the Golf Course Management System. Here you can manage tasks, special tasks, budget, and equipment. Use the navigation buttons to switch between different sections. If you have any questions, please contact support.</p>
+    `;
+    const helpPageSection = document.getElementById('help-page');
+    helpPageSection.innerHTML = helpPageContent;
   }
 
   // Job Board Functions
