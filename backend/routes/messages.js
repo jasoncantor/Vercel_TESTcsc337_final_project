@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Message = require('../models/Message');
 
-// Send a message
+// Send a message to a user
 router.post('/api/message', async (req, res) => {
   const { sender, receiver, content } = req.body;
 
