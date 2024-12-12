@@ -21,10 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
   async function handleLogin() {
     const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
     const enteredUsername = usernameInput.value.trim();
+    const enteredPassword = passwordInput.value.trim();
     
-    if (!enteredUsername) {
-      alert('Please enter a username');
+    if (!enteredUsername || !enteredPassword) {
+      alert('Please enter a username and password');
       return;
     }
     
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch('https://vercel-tes-tcsc337-final-project.vercel.app/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: enteredUsername }),
+        body: JSON.stringify({ username: enteredUsername, password: enteredPassword }),
       });
       if (!response.ok) {
         throw new Error('Login failed');
@@ -115,6 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
         break;
       case 'messaging':
         loadMessages();
+        break;
+      case 'help':
+        window.location.href = 'help.html';
         break;
       default:
         break;

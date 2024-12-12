@@ -4,18 +4,22 @@ const User = require('../models/User');
 
 // User login 
 router.post('/api/login', async (req, res) => {
-  const { username } = req.body;
+  const { username, password } = req.body;
 
-  if (!username) {
-    return res.status(400).json({ message: 'Username is required.' });
+  if (!username || !password) {
+    return res.status(400).json({ message: 'Username and password are required.' });
   }
 
   try {
-    // Find or create the user
+    // Find the user
     let user = await User.findOne({ username });
     if (!user) {
-      user = new User({ username });
-      await user.save();
+      return res.status(400).json({ message: 'Invalid username or password.' });
+    }
+
+    // Verify the password
+    if (user.password !== password) {
+      return res.status(400).json({ message: 'Invalid username or password.' });
     }
 
     res.json({ username: user.username });
