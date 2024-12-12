@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadMessages();
         break;
       case 'help':
-        window.location.href = 'help.html';
+        showSection('help');
         break;
       default:
         break;
