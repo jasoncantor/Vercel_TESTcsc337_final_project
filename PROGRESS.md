@@ -15,3 +15,7 @@ We plan to add more features to the project, such as a detailed reporting system
 # Lessons Learned
 
 During the development process, we have learned the importance of proper planning and design. We have also learned the importance of thorough testing to ensure that all features work as expected and that there are no bugs or issues. Additionally, we have learned the importance of good communication and collaboration within the team to ensure that everyone is on the same page and working towards the same goals.
+
+# User Creation Functionality
+
+We have added the functionality to create a user on the home page. The `frontend/index.html` file now contains a user creation form with input fields for username and password. The `frontend/js/main.js` file has been updated to handle user creation by sending a POST request to the backend. The backend route for user creation in `backend/routes/users.js` has been added to support user creation and save the user to the database.

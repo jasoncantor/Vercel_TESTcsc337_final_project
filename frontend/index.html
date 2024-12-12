@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,14 @@
       <div class="login-container">
         <h2>Login</h2>
         <input type="text" id="username" placeholder="Enter username" />
+        <input type="password" id="password" placeholder="Enter password" />
         <button id="loginBtn">Login</button>
+      </div>
+      <div class="login-container">
+        <h2>Create User</h2>
+        <input type="text" id="newUsername" placeholder="Enter new username" />
+        <input type="password" id="newPassword" placeholder="Enter new password" />
+        <button id="createUserBtn">Create User</button>
       </div>
     </div>
     <div id="dashboard" class="screen">
@@ -22,6 +28,8 @@
         <button class="nav-btn" data-target="special-tasks">Special Task Tracker</button>
         <button class="nav-btn" data-target="budget-tracker">Budget Tracker</button>
         <button class="nav-btn" data-target="equipment-tracker">Equipment Tracker</button>
+        <button class="nav-btn" data-target="messaging">Messaging</button>
+        <button class="nav-btn" data-target="help">Help</button>
         <button id="logoutBtn">Logout</button>
       </nav>
       <div id="content-container">
@@ -114,6 +122,17 @@
           <input type="number" id="equipmentQuantity" placeholder="Quantity" />
           <input type="text" id="equipmentNotes" placeholder="Notes" />
           <button id="addEquipmentBtn">Add Equipment</button>
+        </div>
+
+        <div id="messaging" class="content-section">
+          <h3>Messaging</h3>
+          <div id="message-display">
+            <!-- Messages will be displayed here -->
+          </div>
+          <h4>Send a Message</h4>
+          <input type="text" id="messageReceiver" placeholder="Receiver" />
+          <textarea id="messageContent" placeholder="Message Content"></textarea>
+          <button id="sendMessageBtn">Send Message</button>
         </div>
       </div>
     </div>
