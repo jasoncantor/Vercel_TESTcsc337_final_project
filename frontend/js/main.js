@@ -1,6 +1,13 @@
+/* 
+Names: Connor O'Neill, Jace Sullivan, Jason Cantor
+The main javscript for the front end of the server
+Gets the various elements and updates the webpage accordingly
+Handles creating elements, users, logging out, the help page
+*/
 document.addEventListener('DOMContentLoaded', () => {
-  let username = null; // Store the logged-in username
+  let username = null; 
     
+  //DOM elements
   const loginScreen = document.getElementById('login-screen');
   const dashboard = document.getElementById('dashboard');
   const usernameDisplay = document.getElementById('usernameDisplay');
@@ -19,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const createUserBtn = document.getElementById('createUserBtn');
   createUserBtn.addEventListener('click', handleCreateUser);
 
+  //logs in a user by sending the information to the backend
   async function handleLogin() {
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
@@ -51,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  //creates a user by verifying the information and storing it in the backend
   async function handleCreateUser() {
     const newUsernameInput = document.getElementById('newUsername');
     const newPasswordInput = document.getElementById('newPassword');
@@ -81,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
     
+  //logs a user out of their account
   async function handleLogout() {
     try {
       const response = await fetch('https://cantor-oneill-sullivan-csc337-final.vercel.app/api/logout', {
@@ -98,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
     
+  //handles when a tab of the webpage is selected
   function handleNavigation(event) {
     const target = event.target.getAttribute('data-target');
     showSection(target);
@@ -126,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
     
+  //displays the desired screen that the user selects
   function showScreen(screenId) {
     const screens = document.querySelectorAll('.screen');
     screens.forEach((screen) => {
@@ -134,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById(screenId).classList.add('active');
   }
     
+  //displays the desired tab that the user selects
   function showSection(sectionId) {
     contentSections.forEach((section) => {
       section.style.display = 'none';
@@ -217,12 +230,13 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error(error);
       tasksTbody.innerHTML = '<tr><td colspan="5">An error occurred while loading tasks.</td></tr>';
     }
-
+    //button to create a task
     const createTaskBtn = document.getElementById('createTaskBtn');
     createTaskBtn.removeEventListener('click', createTask);
     createTaskBtn.addEventListener('click', createTask);
   }
     
+  //creates a task with the given information
   async function createTask() {
     const activity = document.getElementById('activity').value;
     const area = document.getElementById('area').value;
@@ -255,6 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
     
+  //marks a task as completed
   async function completeTask(event) {
     const taskId = event.target.getAttribute('data-id');
     
@@ -274,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Delete Task Function
+  // deletes a given task
   async function deleteTask(event) {
     const taskId = event.target.getAttribute('data-id');
   
@@ -298,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Edit Task Function
+  // edits the information for a task
   async function editTask(event) {
     const taskId = event.target.getAttribute('data-id');
     const newActivity = prompt('Enter new activity:');
@@ -366,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dateCell.textContent = new Date(task.applicationDate).toLocaleDateString();
         row.appendChild(dateCell);
   
-        // Action (Delete Button)
+        // Delete Button
         const actionCell = document.createElement('td');
   
         const deleteBtn = document.createElement('button');
@@ -389,7 +404,8 @@ document.addEventListener('DOMContentLoaded', () => {
     createSpecialTaskBtn.removeEventListener('click', createSpecialTask);
     createSpecialTaskBtn.addEventListener('click', createSpecialTask);
   }
-    
+  
+  //function to create a special task
   async function createSpecialTask() {
     const name = document.getElementById('specialName').value;
     const targetArea = document.getElementById('specialArea').value;
@@ -419,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Delete Special Task Function
+  // function to delete a special task
   async function deleteSpecialTask(event) {
     const taskId = event.target.getAttribute('data-id');
   
@@ -497,6 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addBudgetBtn.addEventListener('click', addBudget);
   }
     
+  //function to add an element to the budget
   async function addBudget() {
     const category = document.getElementById('budgetCategory').value;
     const amount = document.getElementById('budgetAmount').value;
@@ -524,6 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  //function to delete an element from the budget
   async function deleteBudget(event) {
     const budgetId = event.target.getAttribute('data-id');
   
@@ -547,6 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Equipment Tracker Functions
   async function loadEquipmentTracker() {
     const equipmentTbody = document.getElementById('equipment-tbody');
     equipmentTbody.innerHTML = '<tr><td colspan="5">Loading equipment data...</td></tr>';
@@ -603,6 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addEquipmentBtn.addEventListener('click', addEquipment);
   }
     
+  //function to add a piece of equipment
   async function addEquipment() {
     const name = document.getElementById('equipmentName').value;
     const status = document.getElementById('equipmentStatus').value;
@@ -634,6 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  //function to delete a piece of equipment
   async function deleteEquipment(event) {
     const equipmentId = event.target.getAttribute('data-id');
   
@@ -708,6 +729,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sendMessageBtn.addEventListener('click', sendMessage);
   }
     
+  //function to send a message
   async function sendMessage() {
     const receiver = document.getElementById('messageReceiver').value;
     const content = document.getElementById('messageContent').value;
@@ -735,6 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  //function to delete a message
   async function deleteMessage(event) {
     const messageId = event.target.getAttribute('data-id');
   

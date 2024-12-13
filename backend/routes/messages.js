@@ -1,3 +1,8 @@
+/* 
+Names: Connor O'Neill, Jace Sullivan, Jason Cantor
+Route to obtain a given users messages from the database
+Allow for sending, recieving, and deleting messages
+*/
 const express = require('express');
 const router = express.Router();
 const Message = require('../models/Message');

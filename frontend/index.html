@@ -1,8 +1,16 @@
+<!--
+Names: Connor O'Neill, Jace Sullivan, Jason Cantor
+Writes the main html for the course management page
+Has the ability to enter a username and a password
+Creates buttons to sumbit information and tables to display it
+Divides the sections into different tabs on the webpage
+Allows for ease of use for the user
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Golf Course Management System</title>
+  <title>Golf Course Maintence Management</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -21,6 +29,7 @@
         <button id="createUserBtn">Create User</button>
       </div>
       <button id="helpBtn" onclick="window.location.href='help.html'">Help</button>
+      <h2>Note: Do not use an important password as the database does not encrypt it.</h2>
     </div>
     <div id="dashboard" class="screen">
       <h2>Welcome, <span id="usernameDisplay"></span></h2>

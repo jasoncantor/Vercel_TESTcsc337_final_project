@@ -1,3 +1,8 @@
+/* 
+Names: Connor O'Neill, Jace Sullivan, Jason Cantor
+Model for a task that the user can create
+Contains all of the fields that a user can input
+*/
 const mongoose = require('mongoose');
 
 const TaskSchema = new mongoose.Schema({

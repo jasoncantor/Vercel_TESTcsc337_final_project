@@ -1,3 +1,8 @@
+/* 
+Names: Connor O'Neill, Jace Sullivan, Jason Cantor
+Route to obtain a given users budget from the database
+Allow for obtaining, deleting, and creating a budget
+*/
 const express = require('express');
 const router = express.Router();
 const Budget = require('../models/Budget');

@@ -1,3 +1,8 @@
+/* 
+Names: Connor O'Neill, Jace Sullivan, Jason Cantor
+The main route to connect the backend to the frontend
+Routes the information to our server
+*/
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');

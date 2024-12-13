@@ -1,3 +1,8 @@
+/* 
+Names: Connor O'Neill, Jace Sullivan, Jason Cantor
+Route to obtain a given users special tasks from the database
+Allow for obtaining, deleting, and creating special tasks
+*/
 const express = require('express');
 const router = express.Router();
 const SpecialTask = require('../models/SpecialTask');

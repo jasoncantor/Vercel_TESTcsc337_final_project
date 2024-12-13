@@ -1,3 +1,8 @@
+/* 
+Names: Connor O'Neill, Jace Sullivan, Jason Cantor
+Route to obtain a given users information from the database
+Allow for creating and logging in as a user.
+*/
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');

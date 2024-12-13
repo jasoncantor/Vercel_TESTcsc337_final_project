@@ -1,3 +1,8 @@
+/* 
+Names: Connor O'Neill, Jace Sullivan, Jason Cantor
+Route to obtain a given users equipment from the database
+Allow for obtaining, deleting, and creating an equipment list
+*/
 const express = require('express');
 const router = express.Router();
 const Equipment = require('../models/Equipment');

@@ -1,3 +1,8 @@
+/* 
+Names: Connor O'Neill, Jace Sullivan, Jason Cantor
+Route to obtain a given users task list from the database
+Allow for obtaining, deleting, creating, and editing the tasks
+*/
 const express = require('express');
 const router = express.Router();
 const Task = require('../models/Task');
